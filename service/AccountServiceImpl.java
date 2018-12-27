@@ -96,9 +96,12 @@ public class AccountServiceImpl implements AccountService {
 		int deposit = 0;
 		for (int i = 0; i < list.size(); i++) {
 			if ( money > 0 && list.get(i).getAccountNum().equals(accountNum)) {
+				
 				 deposit +=  money;
+				
 				 list.get(i).setMoney(deposit);
-				messege = "입금 완료";
+				
+				 messege = "입금 완료";
 			} else if ( money == 0 ) {
 				messege = "!! 입금 실패 : 입금액 확인 !!";
 			}

@@ -95,10 +95,14 @@ public class BankController {
 			}
 			break;
 		case"13":
-			
+			accountNum = JOptionPane.showInputDialog("계좌 입력");
+			int money = Integer.parseInt(JOptionPane.showInputDialog("입금액?"));
+			accountService.deposit(accountNum, money);
 			break;
 		case"14":
-			
+			accountNum = JOptionPane.showInputDialog("계좌 입력");
+			money = Integer.parseInt(JOptionPane.showInputDialog("출금액?"));
+			accountService.withdraw(accountNum, money);
 			break;
 		case"15":
 			accountNum = JOptionPane.showInputDialog("계좌 입력");
