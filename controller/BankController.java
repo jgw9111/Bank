@@ -2,17 +2,23 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import domain.AccountBean;
 import domain.MemberBean;
+import service.AccountService;
+import service.AccountServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
 
 public class BankController {
 	public void start() {
 		MemberBean member = null;
+		AccountBean account = null;
 		MemberService memberService = new MemberServiceImpl();
+		AccountService accountService = new AccountServiceImpl();
 		
 		while(true) {
-		switch(JOptionPane.showInputDialog("[메뉴] \n 0.종료 \n 1.회원가입 \n 2.로그인 \n 3.회원정보 보기\n 4.회원목록 보기 \n 5. 비밀번호 변경 \n 6.회원 탈퇴 \n 7.가입자 수")) {
+		switch(JOptionPane.showInputDialog("[메뉴] \n 0.종료 \n 1.회원가입 \n 2.로그인 \n 3.회원정보 보기\n 4.회원목록 보기 \n 5. 비밀번호 변경 \n 6.회원 탈퇴 \n 7.가입자 수 \n"
+				+ "8.계좌 생성 \n 9.계좌 목록 \n 10.계좌번호로 계좌 찾기 \n 11.계좌 개수 \n 12.계좌 유무 조회 \n 13. 입금 \n 14.출금 \n 15.계좌 삭제")) {
 		
 		case"0":
 			JOptionPane.showMessageDialog(null,"시스템 종료..");
@@ -66,6 +72,41 @@ public class BankController {
 			JOptionPane.showMessageDialog(null,memberService.countMember());
 			break;
 			
+		case"8":
+			accountService.createAccount(0);
+			JOptionPane.showMessageDialog(null,"계좌 생성 완료");
+			break;
+		case"9":
+			JOptionPane.showMessageDialog(null, accountService.findByAll());
+			break;
+		case"10":
+			String accountNum = JOptionPane.showInputDialog("계좌 입력");
+			accountService.findByAccountNum(accountNum);
+			break;
+		case"11":
+			JOptionPane.showMessageDialog(null,accountService.countAccountNum());
+			break;
+		case"12":
+			accountNum = JOptionPane.showInputDialog("계좌 입력");
+			if(accountService.existAccountNum(accountNum)) {
+				JOptionPane.showMessageDialog(null, "계좌 있음");
+			}else {
+				JOptionPane.showMessageDialog(null, "계좌 없음");
+			}
+			break;
+		case"13":
+			
+			break;
+		case"14":
+			
+			break;
+		case"15":
+			accountNum = JOptionPane.showInputDialog("계좌 입력");
+			accountService.deleteAccountNum(accountNum);
+//			JOptionPane.showMessageDialog(null,"계좌 삭제");
+			break;
+			
+	
 			}
 		}
 	}

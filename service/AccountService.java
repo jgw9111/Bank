@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import domain.AccountBean;
 
 /**
@@ -12,15 +14,17 @@ public interface AccountService {
 
 	// c
 	public void createAccount(int money);
+	public String createAccountNum(); // 계좌번호 생성
 	// r
-	public AccountBean[] findByAll();
+	public ArrayList<AccountBean> findByAll();
 	public AccountBean findByAccountNum(String accountNum);
 	public int countAccountNum();
 	public boolean existAccountNum(String accountNum);
-
+	public String findDate(); // 날짜반환
 	// u
-	public void deposit(int money);
-	public void withdraw(int money);
+	public String deposit(String accountNum,int money);
+	public String withdraw(String accountNum,int money);
 	// d
-	public void deleteAccountNum(String id, String pass, String ssn);
+	public void deleteAccountNum(String accountNum);
+	//--------------------------------------------------------------------- ^필수
 }

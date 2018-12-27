@@ -28,7 +28,23 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberBean[] findByName(String name) {
-		
+		int j = 0;
+		for(int i = 0; i < count ; i++) {
+			if(members[i].getName().equals(name)) {
+				j++;
+			}
+		}
+		MemberBean[] beans = new MemberBean[j];
+		j = 0;
+		for(int i = 0; i < count ; i++) {
+			if(members[i].getName().equals(name)) {
+				beans[j] = members[i];
+				j++;
+				if(j==beans.length) {
+					break;
+				}
+			}
+		}
 		return members;
 	}
 
@@ -76,7 +92,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(String id, String pass, String ssn) {
 		for(int i=0;i<count;i++) {
-			if(existMember(id, pass)&& members[i].getSsn().equals(ssn)) {
+			if(existMember(id, pass) && members[i].getSsn().equals(ssn)) {
 				members[i] = members[count-1];
 				members[count-1] = null;
 				count --;

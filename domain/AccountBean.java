@@ -30,7 +30,10 @@ public class AccountBean {
 	}
 	@Override
 	public String toString() {
-		return "AccountBean [accountNum=" + accountNum + ", today=" + today + ", money=" + money + "]";
+		return String.format("[계좌 정보] \n"
+				+ "계좌 번호 : %s \n"
+				+ "생  성  일 : %s \n"
+				+ "현재 잔액 : %s",accountNum,today,money);
 	}
 	
 }
